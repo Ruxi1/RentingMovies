@@ -1,0 +1,91 @@
+﻿@model IEnumerable<RentingMovies.Models.DBObjects.MovieModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Movies</h1>
+
+@if(User.IsInRole("User") || User.IsInRole("Admin"))
+{
+    <p>
+    <a asp-action="Create">Create New</a>
+</p>
+}
+
+
+<form asp-controller="Movie" asp-action="SearchMovie" method="get">
+    <p>
+        Name: <input type="text" name="name"/>
+        <input type="submit" value="Search"/>
+    </p>
+    </form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdMovie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailableQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMovie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvailableQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id=item.IdMovie }) |
+                @if(User.IsInRole("User") || User.IsInRole("Admin"))
+                {
+                     @Html.ActionLink("Edit", "Edit", new { id=item.IdMovie })    
+                }
+                |
+                @if(User.IsInRole("Admin"))
+                {
+                     @Html.ActionLink("Delete", "Delete", new { id=item.IdMovie })    
+                } 
+                |
+                @if(User.IsInRole("User") || User.IsInRole("Admin"))
+                {
+                     @Html.ActionLink("RentingsByMovie", "RentingsByMovie", "Renting", new { idMovie=item.IdMovie })    
+                }
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

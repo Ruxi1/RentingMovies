@@ -1,0 +1,58 @@
+﻿@model IEnumerable<RentingMovies.Models.DBObjects.RentingModel>
+
+@{
+    ViewData["Title"] = "RentingsByMovie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>RentingsByMovie</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdRenting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdMovie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdClient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdRenting)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMovie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.IdRenting }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.IdRenting }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.IdRenting })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

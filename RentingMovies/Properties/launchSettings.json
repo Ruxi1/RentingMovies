@@ -1,0 +1,29 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:47147",
+      "sslPort": 44370
+    }
+  },
+  "profiles": {
+    "RentingMovies": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings_DefaultConnection": "Data Source=DESKTOP-H7QS629\\\\SQLEXPRESS;Initial Catalog=rentingmovies;Integrated Security=True;MultipleActiveResultSets=True"
+      },
+      "applicationUrl": "https://localhost:7214;http://localhost:5214",
+      "dotnetRunMessages": true
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
